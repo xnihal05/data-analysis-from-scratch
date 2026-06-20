@@ -83,7 +83,7 @@ Solidified NumPy basics with focused exercises.
 
 ---
 
-## 🔜 Coming Up
+## - Coming Up
 
 ### Day 6 — Data Visualization (in progress)
 Starting with **Matplotlib** and/or **Seaborn** to bring the data to life visually.  
@@ -105,7 +105,7 @@ Charts, plots, graphs — all coming soon.
 
 ---
 
-## 📌 Tools Used
+## - Tools Used
 
 - **Python 3.12**
 - **Pandas** — for working with tables and datasets

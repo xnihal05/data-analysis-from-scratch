@@ -83,11 +83,34 @@ Solidified NumPy basics with focused exercises.
 
 ---
 
-## - Coming Up
+### Day 6 — Data Visualization Theory (Matplotlib + Seaborn)
+Learned the core chart types and when to use each one.
 
-### Day 6 — Data Visualization (in progress)
-Starting with **Matplotlib** and/or **Seaborn** to bring the data to life visually.  
-Charts, plots, graphs — all coming soon.
+- Understood what data visualization is — turning data into graphs, charts, and plots
+- **Matplotlib** (`pyplot`) as the base plotting library; **Seaborn** as its advanced wrapper built on top of it
+- **Line Plot** — for continuous/time-series data (e.g. sales over a week); customized with `color`, `marker`, `linestyle`, `markersize`, `markerfacecolor`, `markeredgecolor`, and `grid()`
+- Plotted **multiple lines** on one chart using `label` + `legend()`
+- **Bar Plot** — for comparing categories; used `plt.bar()` for vertical and `plt.barh()` for horizontal
+- **Pie Chart** — for showing proportions; used `autopct` for percentage formatting, `explode` to highlight a slice, and `shadow` for styling
+- **Scatter Plot** — for checking correlation between two variables (e.g. roll number vs marks)
+- **Histogram** — for frequency distribution across ranges; used `bins` to control grouping
+- **Box Plot** (`sns.boxplot`) — for distribution and outlier detection; showed how anomaly values (like age=300) stick out visually
+- **Violin Plot** (`sns.violinplot`) — like box plot but also shows data concentration/density
+- **Subplots** — `plt.subplots()` creates the figure, `plt.subplot(rows, cols, position)` places each individual plot
+
+---
+
+### Day 7 — Data Visualization Hands-on (Real Dataset)
+Applied all visualization concepts on a real `cars.csv` dataset.
+
+- Loaded and explored the dataset — checked `.info()`, `.describe()`, nulls, and duplicates (dataset was clean)
+- **Scatter Plot** — plotted `mpg` vs `hp`, then added `hue='brand'` to color-code by car brand
+- **Subplots with Seaborn** — created side-by-side and stacked scatter plots (`mpg vs hp` and `cylinders vs hp`)
+- **Bar Plot subplots** — `cylinders vs hp` and `cylinders vs mpg` side by side using `sns.barplot()` with `hue='brand'`
+- **Pie Chart** — plotted brand distribution using `value_counts()` on the brand column with `explode` and `shadow`
+- **Box Plot** — `cylinders vs hp` grouped by brand to compare distributions
+- **Heatmap** — used `df.select_dtypes([int, float])` + `.corr()` to build a correlation matrix, then visualized it with `sns.heatmap()`, `annot=True`, and different `cmap` options (`Set2`, `Blues`)
+- **3D Scatter Plot** — used `plotly.express` (`px.scatter_3d`) to plot `mpg`, `hp`, and `brand` in an interactive 3D chart
 
 ---
 
@@ -111,4 +134,7 @@ Charts, plots, graphs — all coming soon.
 - **Pandas** — for working with tables and datasets
 - **NumPy** — for numerical operations and arrays
 - **Jupyter Notebook** — for writing and running code interactively
+- **Matplotlib** — for core plotting and charts
+- **Seaborn** — for advanced, cleaner visualizations built on Matplotlib
+- **Plotly** — for interactive 3D charts
 - **On Anaconda Navigator - jupyter notebook**

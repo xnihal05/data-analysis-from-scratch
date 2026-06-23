@@ -91,7 +91,7 @@ Charts, plots, graphs — all coming soon.
 
 ---
 
-## 🛠 How to Run
+## - How to Run
 
 1. Make sure you have Python installed
 2. Install the required libraries:

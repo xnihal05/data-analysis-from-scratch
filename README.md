@@ -19,6 +19,11 @@ Right now it covers **Pandas** and **NumPy** — and I'll keep adding more as I 
 | `day_08_Statistic_and_Probability.ipynb` | Statistics & Probability (Theory + Code) |
 | `day_09_Statistic_and_Probability.ipynb` | Probability — Theory + Hands-on (Real Dataset) |
 | `day_10_AirBnb_CaseStudy.ipynb` | Airbnb NYC — End-to-End Case Study |
+| `day_11_inferential_stats.ipynb` | Inferential Statistics — Confidence Interval |
+| `day_12_inferential_stats.ipynb` | Inferential Statistics — Sampling + Hypothesis Testing |
+| `day_13_inferential_stats.ipynb` | Inferential Statistics — T-Tests, ANOVA, Chi-Square |
+| `day_14_linear_algebra.ipynb` | Linear Algebra for ML — Vectors, Matrices, Tensors |
+
 
 ---
 
@@ -162,6 +167,60 @@ Applied everything learned so far on a real Airbnb New York City dataset (~48,89
 
 ---
 
+### Day 11 — Inferential Statistics: Confidence Interval
+Understood why we can't always study the full population and how confidence intervals solve that.
+
+- Why inferential stats exist — population is too large, time-consuming, expensive; we use samples to infer about population
+- Point Estimation vs Confidence Interval — point estimation says sample mean = population mean (not accurate); CI gives a range instead
+- Margin of Error — maximum error allowed while estimating sample mean; used to construct the CI range
+- Bigger interval = more confidence, smaller interval = less confidence; 100% confidence makes the interval useless
+- Normal Distribution — mean, median, mode are equal and symmetric; used as the basis for CI calculations
+- Z-score — measures how far the sample mean is from the population mean in standard deviations
+- Confidence levels — 90%, 95%, 99% each correspond to a specific Z-score; chosen based on the problem
+
+---
+
+### Day 12 — Inferential Statistics: Sampling + Hypothesis Testing
+Covered Central Limit Theorem, sampling strategies, and introduced hypothesis testing with Z-test and T-test.
+
+- Central Limit Theorem — if sample size > 30, the sampling distribution will always be normally distributed regardless of population shape; 30 is the bare minimum
+- Random Sampling — works when population is homogeneous (e.g. all ₹20 Lays packets)
+- Stratified Sampling — divide population into groups (rich, middle, poor) and sample proportionally from each; used when population has clear subgroups
+- Hypothesis Testing — Null Hypothesis (H₀) = no change/difference; Alternative Hypothesis (H₁) = there is a difference
+- One Sample Z-Test — used when population std is known; calculated Z-statistic and p-value using `scipy.stats.norm.sf()`; if p < 0.05 → reject null
+- One Sample T-Test — used when population std is unknown; first checked normality with `shapiro()`, then ran `ttest_1samp()`; if shapiro fails → use `mannwhitneyu` instead
+- p-value logic — if p < 0.05 we have enough evidence to reject the null hypothesis
+
+---
+
+### Day 13 — Inferential Statistics: Two-Sample T-Test, ANOVA, Chi-Square
+Applied hypothesis testing on real problems with multiple samples and categorical data.
+
+- Two-Sample T-Test — compares means of two independent groups; prerequisites: both normally distributed (`shapiro()`), equal variance (`levene()`); used `ttest_ind()` with `equal_var=True/False` based on Levene result
+- Practiced on dept salaries (unequal variance → `equal_var=False`) and battery suppliers (equal variance → `equal_var=True`)
+- ANOVA (`f_oneway`) — used when comparing more than 2 groups; same prerequisites (normality + equal variance + independence); if any condition fails → use `kruskal` test instead
+- Practiced on 4 service center satisfaction scores; p < 0.05 → centers perform differently
+- Chi-Square Test (`chi2_contingency`) — used for categorical data to test independence between two variables; practiced on advertising medium vs purchase decision contingency table
+- Libraries used — `scipy.stats`: `shapiro`, `levene`, `ttest_ind`, `f_oneway`, `kruskal`, `chi2_contingency`
+
+---
+
+### Day 14 — Linear Algebra for ML
+Covered the math behind how ML models actually see and process data.
+
+- Data types in linear algebra — Scalar (single number), Vector (1D array), Matrix (2D array), Tensor (3D+ array)
+- How images work — grayscale images are 2D matrices of values 0–255; colored images are 3D tensors (RGB channels stacked)
+- Vectors have magnitude and direction — ML uses these to understand where data points are in space
+- Transpose — converts rows to columns; ML does this by default before any calculation; used in portrait ↔ landscape image conversion
+- Text vectorization — unique words extracted from a column become features; each sentence is represented as a vector of 0s and 1s
+- Matrix operations in NumPy — addition/subtraction (`+`, `-`), scalar addition, element-wise multiplication (Hadamard product: `mat1 * mat2`), actual dot product (`mat1 @ mat2` or `np.dot()`)
+- Matrix Rank — `np.linalg.matrix_rank()`; tells how many rows/columns carry unique info; low rank = redundant data
+- Determinant — `np.linalg.det()`; if zero → singular matrix → no inverse exists
+- Inverse — `np.linalg.inv()`; used in ML for finding weights (W); only exists when determinant ≠ 0
+- Eigen Vectors — vectors that don't change direction when multiplied by a matrix; Eigen Values = how much they scale
+
+---
+
 ## - Tools Used
 
 - **Python 3.12**
@@ -172,4 +231,5 @@ Applied everything learned so far on a real Airbnb New York City dataset (~48,89
 - **Seaborn** — for advanced, cleaner visualizations built on Matplotlib
 - **Plotly** — for interactive 3D charts
 - **statistics** — (built-in) | For mean, median, mode, variance — sample-formula based calculations |
+- **scipy** For statistical tests — Z-test, T-test, ANOVA, Chi-Square, Shapiro-Wilk, Levene |
 - **On Anaconda Navigator - jupyter notebook**
